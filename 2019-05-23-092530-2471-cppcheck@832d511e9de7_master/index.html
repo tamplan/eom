@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - eom</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script language="javascript">
+      function getStyle(el,styleProp) {
+        if (el.currentStyle)
+          var y = el.currentStyle[styleProp];
+        else if (window.getComputedStyle)
+          var y = document.defaultView.getComputedStyle(el,null).getPropertyValue(styleProp);
+        return y;
+      }
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+        if (el.style.display == "block") {
+          el.style.display = "none";
+          mark.innerHTML = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.innerHTML = "[-]";
+        }
+      }
+      function init_expandables() {
+        var elts = document.getElementsByClassName("expandable");
+        for (var i = 0; i < elts.length; i++) {
+          var el = elts[i];
+          var clickable = el.getElementsByTagName("span")[0];
+          var marker = clickable.getElementsByClassName("marker")[0];
+          var content = el.getElementsByClassName("content")[0];
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.onclick = toggle;
+        }
+      }
+      function set_class_display(c, st) {
+        var elements = document.querySelectorAll('.' + c),
+            len = elements.length;
+        for (i = 0; i < len; i++) {
+            elements[i].style.display = st;
+        }
+      }
+      function toggle_class_visibility(id) {
+        var box = document.getElementById(id);
+        set_class_display(id, box.checked ? '' : 'none');
+      }
+    </script>
+  </head>
+  <body onload="init_expandables()">
+      <div id="header">
+        <h1>Cppcheck report - eom:  </h1>
+      </div>
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Defect summary;</a> </p>
+       <table>           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='variableScope' name='variableScope' checked></td><td>71</td><td>variableScope</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unreadVariable' name='unreadVariable' checked></td><td>9</td><td>unreadVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedStructMember' name='unusedStructMember' checked></td><td>5</td><td>unusedStructMember</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='shadowVar' name='shadowVar' checked></td><td>4</td><td>shadowVar</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='redundantAssignment' name='redundantAssignment' checked></td><td>3</td><td>redundantAssignment</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='selfAssignment' name='selfAssignment' checked></td><td>2</td><td>selfAssignment</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='knownConditionTrueFalse' name='knownConditionTrueFalse' checked></td><td>1</td><td>knownConditionTrueFalse</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='missingInclude' name='missingInclude' checked></td><td>1</td><td>missingInclude</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='nullPointerRedundantCheck' name='nullPointerRedundantCheck' checked></td><td>1</td><td>nullPointerRedundantCheck</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unknownMacro' name='unknownMacro' checked></td><td>1</td><td>unknownMacro</td></tr>           <tr><td></td><td>98</td><td>total</td></tr>       </table>       <a href="stats.html">Statistics</a></p>
+      </div>
+      <div id="content_index">
+       <table>
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+       <tr><td colspan='4'><a href='23.html'></a></td></tr>
+         <tr class="missingInclude"><td></td><td>missingInclude</td><td></td><td>information</td><td>Cppcheck cannot find all the include files (use --check-config for details)</td></tr>
+       <tr><td colspan='4'><a href='0.html'>cut-n-paste/toolbar-editor/egg-editable-toolbar.c</a></td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-223">223</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'action' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="0.html#line-461">461</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable screen shadows outer variable</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-775">775</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'type' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-847">847</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'string' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="0.html#line-881">881</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable action shadows outer variable</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-1204">1204</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'n_items' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-1350">1350</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'children' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-1453">1453</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'l' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-1453">1453</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'n_items' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='1.html'>cut-n-paste/toolbar-editor/egg-toolbar-editor.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="1.html#line-622">622</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'y' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='2.html'>cut-n-paste/toolbar-editor/egg-toolbars-model.c</a></td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-757">757</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'node' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-835">835</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'ipos' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='3.html'>jpegutils/transupp-6b.c</a></td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-137">137</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-187">187</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-257">257</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-305">305</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-369">369</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-434">434</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-538">538</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'compptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-704">704</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'itemp' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-924">924</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'm' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='4.html'>jpegutils/transupp-8a.c</a></td></tr>
+       <tr class="unknownMacro"><td><a href="4.html#line-104">104</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If LOCAL is a macro then please configure it.</td></tr>
+       <tr><td colspan='4'><a href='5.html'>src/eom-close-confirmation-dialog.c</a></td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-317">317</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'wg' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-454">454</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'width' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-455">455</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'ratio' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='6.html'>src/eom-error-message-area.c</a></td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-48">48</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'secondary_markup' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-50">50</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'secondary_label' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='7.html'>src/eom-exif-util.c</a></td></tr>
+       <tr class="variableScope"><td><a href="7.html#line-204">204</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'buf_ptr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="7.html#line-228">228</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'buf_ptr' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='8.html'>src/eom-file-chooser.c</a></td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-145">145</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'filter' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-147">147</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'mime_types' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-147">147</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'pattern' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-248">248</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'bytes' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-249">249</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'pixels' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-250">250</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'bytes_str' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-251">251</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'width' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-252">252</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'height' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='9.html'>src/eom-image-jpeg.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-209">209</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'jsrcerr.error' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-215">215</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'jdsterr.filename' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-219">219</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'jdsterr.error' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-356">356</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'jbuf' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-401">401</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'jerr.filename' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="9.html#line-405">405</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'jerr.error' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='10.html'>src/eom-image.c</a></td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-626">626</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'p' can be reduced.</td></tr>
+       <tr class="redundantAssignment"><td><a href="10.html#line-1259">1259</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'priv->status' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-1376">1376</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'trans' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-1377">1377</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'inverse' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-1407">1407</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'tmp_file' can be reduced.</td></tr>
+       <tr class="redundantAssignment"><td><a href="10.html#line-1741">1741</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'priv->status' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-2189">2189</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'mime_types' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-2190">2190</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="10.html#line-2220">2220</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable supported_mime_types shadows outer variable</td></tr>
+       <tr><td colspan='4'><a href='11.html'>src/eom-jobs.c</a></td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-920">920</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'src' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-920">920</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'dest' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-921">921</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'filename' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-921">921</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'dest_filename' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='12.html'>src/eom-list-store.c</a></td></tr>
+       <tr class="variableScope"><td><a href="12.html#line-253">253</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'thumbnail' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="12.html#line-413">413</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable image shadows outer variable</td></tr>
+       <tr class="variableScope"><td><a href="12.html#line-471">471</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'child' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="12.html#line-551">551</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file_info' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='13.html'>src/eom-metadata-details.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="13.html#line-81">81</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >struct member 'ExifTagCategory::id' is never used.</td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-318">318</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'tree_path' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='14.html'>src/eom-metadata-reader-png.c</a></td></tr>
+       <tr class="redundantAssignment"><td><a href="14.html#line-268">268</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'priv->state' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="14.html#line-534">534</a></td><td>knownConditionTrueFalse</td><td><a href='https://cwe.mitre.org/data/definitions/570.html'>570</a></td><td>style</td><td >Condition 'zstr.avail_out==0' is always false</td></tr>
+       <tr><td colspan='4'><a href='15.html'>src/eom-print-image-setup.c</a></td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-688">688</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'pixbuf' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='16.html'>src/eom-properties-dialog.c</a></td></tr>
+       <tr class="variableScope"><td><a href="16.html#line-148">148</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'mime_str' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='17.html'>src/eom-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-580">580</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="17.html#line-580">580</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       <tr><td colspan='4'><a href='18.html'>src/eom-scroll-view.c</a></td></tr>
+       <tr class="selfAssignment"><td><a href="18.html#line-1039">1039</a></td><td>selfAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>warning</td><td >Redundant assignment of 'yofs' to itself.</td></tr>
+       <tr class="selfAssignment"><td><a href="18.html#line-1044">1044</a></td><td>selfAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>warning</td><td >Redundant assignment of 'xofs' to itself.</td></tr>
+       <tr><td colspan='4'><a href='19.html'>src/eom-thumb-view.c</a></td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-410">410</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'path' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-447">447</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'image' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-448">448</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-537">537</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'extra_info' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-882">882</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'path' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="19.html#line-956">956</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'list' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='20.html'>src/eom-uri-converter.c</a></td></tr>
+       <tr class="variableScope"><td><a href="20.html#line-330">330</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'token' can be reduced.</td></tr>
+       <tr class="nullPointerRedundantCheck"><td><a href="20.html#line-627">627</a></td><td>nullPointerRedundantCheck</td><td><a href='https://cwe.mitre.org/data/definitions/476.html'>476</a></td><td>warning</td><td >Either the condition 'file!=NULL' is redundant or there is possible null pointer dereference: file.</td></tr>
+       <tr><td colspan='4'><a href='21.html'>src/eom-util.c</a></td></tr>
+       <tr class="variableScope"><td><a href="21.html#line-87">87</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'valid_bytes' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="21.html#line-211">211</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='22.html'>src/eom-window.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="22.html#line-564">564</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'show_image_collection' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-2164">2164</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'dialog' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-2332">2332</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'dialog' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="22.html#line-3090">3090</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'priv' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3209">3209</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3210">3210</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file_info' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3212">3212</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'image' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3241">3241</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'image' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3402">3402</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'img' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-3404">3404</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'response' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-4093">4093</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file_list' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-4094">4094</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'window' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="22.html#line-4603">4603</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'screen' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-5286">5286</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="22.html#line-5287">5287</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'image' can be reduced.</td></tr>
+       </table>
+      </div>
+      <div id="footer">
+        <p>
+         Cppcheck 1.87 - a tool for static C/C++ code analysis</br>
+         </br>
+         Internet: <a href="http://cppcheck.net">http://cppcheck.net</a></br>
+         IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a></br>
+        <p>
+      </div>
+  </body>
+</html>
